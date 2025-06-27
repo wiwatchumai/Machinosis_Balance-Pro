@@ -3,8 +3,13 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 st.set_page_config(page_title="Single-Plane Balancing", page_icon="favicon.png")
-st.image("favicon.png", width=100)
-st.title("Single Plane Balancing of Rotating Machinery")
+
+col1, col2 = st.columns([8, 2])
+with col1:
+    st.title("Single Plane Balancing of Rotating Machinery")
+with col2:
+    st.image("favicon.png", width=100)
+
 st.write("Made by Wiwat Chumai (Mechanical and Aerospace Engineering, Kyushu University)")
 # Input fields
 o_amplitude = st.number_input("Original vibration amplitude (e.g. mils):", min_value=0.0)
