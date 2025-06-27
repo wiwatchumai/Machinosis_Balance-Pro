@@ -111,7 +111,7 @@ if st.button("Run Balancing Analysis"):
     col1, col2 = st.columns([2, 8])
     with col1:
         st.write("")  # Add vertical space above the image
-        st.image("author.png", width=120)  #
+        st.image("author.png", width=115)  #
     with col2:
         st.write("Wiwat Chumai")  # Add vertical space above the image
         st.write("Mechanical and Aerospace Engineering, Kyushu University")
