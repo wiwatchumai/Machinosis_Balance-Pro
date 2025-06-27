@@ -110,6 +110,7 @@ if st.button("Run Balancing Analysis"):
     st.title("Author")
     col1, col2 = st.columns([2, 8])
     with col1:
+        st.write("")  # Add vertical space above the image
         st.image("author.png", width=120)  #
     with col2:
         st.write("Wiwat Chumai")  # Add vertical space above the image
