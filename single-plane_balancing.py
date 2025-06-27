@@ -54,3 +54,28 @@ cw_amplitude = hs_amplitude
 cw_phase = hs_phase + 180  # 180 degrees phase shift for correction weight
 
 print(f"Correction Weight: {cw_amplitude:.2f} mils at {cw_phase:.2f} degrees")
+
+# Polar plot of vectors: original (o), original+trial (ot), and effective (t)
+plt.figure(figsize=(7, 7))
+ax = plt.subplot(111, polar=True)
+
+# Original vector
+ax.arrow(np.radians(o_phase), 0, 0, o_amplitude, 
+         length_includes_head=True, head_width=0.1, head_length=0.1, color='b', label='Original (o)')
+ax.text(np.radians(o_phase), o_amplitude * 1.05, f'{o_amplitude:.2f}', color='b', ha='center', va='bottom', fontsize=10, fontweight='bold')
+
+# Original + trial vector
+ax.arrow(np.radians(ot_phase), 0, 0, ot_amplitude, 
+         length_includes_head=True, head_width=0.1, head_length=0.1, color='g', label='Original+Trial (ot)')
+ax.text(np.radians(ot_phase), ot_amplitude * 1.05, f'{ot_amplitude:.2f}', color='g', ha='center', va='bottom', fontsize=10, fontweight='bold')
+
+# Effective vector (t)
+ax.arrow(np.radians(Phase_t % 360), 0, 0, Amplitude_t, 
+         length_includes_head=True, head_width=0.1, head_length=0.1, color='r', label='Effective (t)')
+ax.text(np.radians(Phase_t % 360), Amplitude_t * 1.05, f'{Amplitude_t:.2f}', color='r', ha='center', va='bottom', fontsize=10, fontweight='bold')
+
+ax.set_theta_zero_location('E')
+ax.set_theta_direction(-1)
+ax.set_title('Vibration Vectors (Polar Plot)')
+ax.legend(loc='upper right', bbox_to_anchor=(1.2, 1.1))
+plt.show()
