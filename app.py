@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 
-st.title("Single Plane Balancing in Rotor Dynamics")
+st.title("Single Plane Balancing of Rotating Machinery")
 
 # Input fields
 o_amplitude = st.number_input("Original vibration amplitude (in mils):", min_value=0.0, value=10.0)
@@ -66,3 +66,7 @@ if st.button("Calculate and Plot"):
     ax.set_title('Vibration Vectors (Polar Plot)')
     ax.legend(loc='upper right', bbox_to_anchor=(1.2, 1.1))
     st.pyplot(fig)
+
+    st.title("References")
+    st.write("This application is based on the principles of single plane balancing in rotating machinery. The corrections are based on the following references(s):")
+    st.write("[1] R. Kelm, D. Pavelek, and W. Kelm, “Rotor Balancing Tutorial,” in Proc. 45th Turbomachinery & 32nd Pump Symposia, Houston, TX, USA, Sept. 12–15, 2016.")
