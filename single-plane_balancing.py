@@ -15,7 +15,23 @@ ot_phase = float(input("Enter the original + trial weight vibration phase (in de
 
 # Input trial weight vector
 tw_amplitude = float(input("Enter the trial weight amplitude (in oz): "))
+
+# Input rotor speed in RPM
+rotor_speed = float(input("Enter the rotor speed (RPM): "))
+
+# Input balancing radius
+balancing_radius = float(input("Enter the balancing radius (in): "))
+
+# Input rotor weight
+rotor_weight = float(input("Enter the rotor weight (Pounds): "))
+
+# Input trail weight percentage to rotor weight
+tw_percentage = float(input("Enter the percentage to rotor weight (e.g. 5/10/15%): "))
+# Input trial weight phase
 tw_phase = float(input("Enter the trial weight phase (in degrees): "))
+# calculate the predicted trial weight magnitude
+tw_predicted = 35.27396195 * ((tw_percentage / 100) * rotor_weight * 0.45359237 * 9.81)/ (balancing_radius * 0.0245 * ((rotor_speed*(2*np.pi/60))**2))
+print(f"Predicted Trial Weight: {tw_predicted:.2f} oz")
 
 # calculate the Real and Imaginary components of the original and trial weight vibration vectors
 Re_O = o_amplitude * np.cos(np.radians(o_phase))
@@ -33,27 +49,43 @@ print(f"Effective vibration vector: {Amplitude_t:.2f} mils at {Phase_t:.2f} degr
 
 #___________________________________________________________________#
 
+# Use YOUR trail weight amplitude and phase
 magnitude_o = np.sqrt(Re_O**2 + Im_O**2)
 # calculate the influence coefficient 
-#calculate the influence coefficient
 influence_coefficient = (tw_amplitude)/Amplitude_t
 phase_influence_coefficient = tw_phase - Phase_t
 
 print(f"Influence Coefficient: {influence_coefficient:.2f} at {phase_influence_coefficient:.2f} degrees")
 
-#calculate the heavy spot
+# calculate the heavy spot
 hs_amplitude = influence_coefficient * o_amplitude
 hs_phase = o_phase + phase_influence_coefficient
 
 print(f"Heavy Spot: {hs_amplitude:.2f} mils at {hs_phase:.2f} degrees")
 
+#
+# 
+
+# calculate the influence coefficient 
+influence_coefficient_predicted = (tw_predicted)/Amplitude_t
+
+print(f"(Predicted) Influence Coefficient: {influence_coefficient:.2f} at {phase_influence_coefficient:.2f} degrees")
+
+#calculate the heavy spot
+hs_amplitude_predicted = influence_coefficient_predicted * o_amplitude
+hs_phase = o_phase + phase_influence_coefficient
+
+print(f"(Predicted) Heavy Spot: {hs_amplitude:.2f} mils at {hs_phase:.2f} degrees")
+
 #___________________________________________________________________#
 
 # calculate correction weight
 cw_amplitude = hs_amplitude
+cw_amplitude_predicted = hs_amplitude_predicted
 cw_phase = hs_phase + 180  # 180 degrees phase shift for correction weight
 
 print(f"Correction Weight: {cw_amplitude:.2f} mils at {cw_phase:.2f} degrees")
+print(f"Correction Weight: {cw_amplitude_predicted:.2f} mils at {cw_phase:.2f} degrees")
 
 # Polar plot of vectors: original (o), original+trial (ot), and effective (t)
 plt.figure(figsize=(7, 7))
