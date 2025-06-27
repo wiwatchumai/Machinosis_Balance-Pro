@@ -120,7 +120,7 @@ if st.button("Run Balancing Analysis"):
     st.markdown("---")
     st.write("📬 **Questions or Suggestions?** Please do not hesitate to contact. Feel free to reach out through the channels below:")
     st.markdown(
-        "🔗 [GitHub Repository](https://github.com/wiwatchumai/Machinosis_Balance-Pro.git) &nbsp;&nbsp;🚀  \n"
+        "🔗 [GitHub Repository](https://github.com/wiwatchumai) &nbsp;&nbsp;🚀  \n"
         "📧 [Email Me](mailto:wiwatchumai@gmail.com) &nbsp;&nbsp;✉️  \n"
         "🔍 [More About the Author](https://v0-new-project-znvvxbesxef.vercel.app/) &nbsp;&nbsp;📖"
     )
