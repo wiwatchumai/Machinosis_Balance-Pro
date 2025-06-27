@@ -3,7 +3,15 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 st.set_page_config(page_title="Single-Plane Balancing", page_icon="favicon.png")
-st.image("favicon.png", width=60)
+
+col1, col2, col3 = st.columns([1, 2, 1])
+with col1:
+    st.write("")
+with col2:
+    st.image("favicon.png", width=60)
+with col3:
+    st.write("")
+
 st.title("Single Plane Balancing of Rotating Machinery")
 st.write("Made by Wiwat Chumai (Mechanical and Aerospace Engineering, Kyushu University)")
 # Input fields
