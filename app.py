@@ -10,7 +10,7 @@ o_phase = st.number_input("Original vibration phase (e.g. degrees):", min_value=
 ot_amplitude = st.number_input("Original + trial weight vibration amplitude (e.g. mils):", min_value=0.0, value=15.0)
 ot_phase = st.number_input("Original + trial weight vibration phase (e.g. degrees):", min_value=0.0, max_value=360.0, value=90.0)
 tw_amplitude = st.number_input("Trial weight amplitude (e.g. oz):", min_value=0.0, value=1.0)
-tw_phase = st.number_input("Trial weight phase (e.g. degrees):", min_value=0.0, max_value=360.0, value=180.0)
+tw_phase = st.number_input("Trial weight phase ( degrees):", min_value=0.0, max_value=360.0, value=180.0)
 
 if st.button("Calculate and Plot"):
     # Calculate real and imaginary components
@@ -46,29 +46,20 @@ if st.button("Calculate and Plot"):
     fig = plt.figure(figsize=(7, 7))
     ax = plt.subplot(111, polar=True)
 
-    # Helper function for wedge arrow head using annotate
-    def polar_arrow(ax, angle_deg, length, color, label, text):
-        angle_rad = np.radians(angle_deg)
-        ax.annotate(
-            '', 
-            xy=(angle_rad, length), 
-            xytext=(0, 0),
-            arrowprops=dict(
-                arrowstyle="wedge,tail_width=0.7",  # Wedge arrow head
-                color=color,
-                lw=2
-            ),
-            annotation_clip=False
-        )
-        ax.text(angle_rad, length * 1.05, text, color=color, ha='center', va='bottom', fontsize=10, fontweight='bold')
-        # For legend
-        ax.plot([], [], color=color, label=label)
+    # Original vector
+    ax.arrow(np.radians(o_phase), 0, 0, o_amplitude, 
+             length_includes_head=True, head_width=0.1, head_length=0.1, color='b', label='Original (o)')
+    ax.text(np.radians(o_phase), o_amplitude * 1.05, f'{o_amplitude:.2f}', color='b', ha='center', va='bottom', fontsize=10, fontweight='bold')
 
-    # Use the helper function for all vectors
-    polar_arrow(ax, o_phase, o_amplitude, 'b', 'Original (o)', f'{o_amplitude:.2f}')
-    polar_arrow(ax, ot_phase, ot_amplitude, 'g', 'Original+Trial (ot)', f'{ot_amplitude:.2f}')
-    polar_arrow(ax, Phase_t, Amplitude_t, 'r', 'Effective (t)', f'{Amplitude_t:.2f}')
-    polar_arrow(ax, cw_phase % 360, cw_amplitude, 'm', 'Correction (cw)', f'{cw_amplitude:.2f}')
+    # Original + trial vector
+    ax.arrow(np.radians(ot_phase), 0, 0, ot_amplitude, 
+             length_includes_head=True, head_width=0.1, head_length=0.1, color='g', label='Original+Trial (ot)')
+    ax.text(np.radians(ot_phase), ot_amplitude * 1.05, f'{ot_amplitude:.2f}', color='g', ha='center', va='bottom', fontsize=10, fontweight='bold')
+
+    # Effective vector (t)
+    ax.arrow(np.radians(Phase_t), 0, 0, Amplitude_t, 
+             length_includes_head=True, head_width=0.1, head_length=0.1, color='r', label='Effective (t)')
+    ax.text(np.radians(Phase_t), Amplitude_t * 1.05, f'{Amplitude_t:.2f}', color='r', ha='center', va='bottom', fontsize=10, fontweight='bold')
 
     ax.set_theta_zero_location('E')
     ax.set_theta_direction(-1)
