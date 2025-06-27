@@ -113,6 +113,8 @@ if st.button("Run Balancing Analysis"):
     st.write("Wiwat Chumai")
     st.write("Mechanical and Aerospace Engineering, Kyushu University")
     st.write("If you have any questions or suggestions, please feel free to contact me through the following channels:")
-    st.markdown("[GitHub](https://github.com/wiwatchumai/Machinosis_Balance-Pro.git)")
-    st.markdown("[Gmail](wiwatchumai@gmail.com)")
-    st.markdown("[More information about author](https://v0-new-project-znvvxbesxef.vercel.app/)")
+    st.markdown(
+        "[GitHub](https://github.com/wiwatchumai/Machinosis_Balance-Pro.git) | "
+        "[Gmail](wiwatchumai@gmail.com) | "
+        "[More information about author](https://v0-new-project-znvvxbesxef.vercel.app/)"
+    )
