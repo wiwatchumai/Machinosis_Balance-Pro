@@ -93,7 +93,14 @@ if st.button("Run Balancing Analysis"):
 
     st.markdown("---------------------------------------------------")  # horizontal line for separation
     st.image("mcl.png", width=100)
-    st.title("References")
+    col1, col2 = st.columns([8, 2])
+    with col1:
+        st.title("References")
+    with col2:
+        st.write("")  # Add vertical space above the image
+        st.write("")  # Add more space if needed
+        st.image("mcl.png", width=100)
+
     st.write("This application is developed based on the principles of single-plane balancing for rotating machinery. The correction methods implemented are guided by the following reference(s):")
     st.write("[1] R. Kelm, D. Pavelek, and W. Kelm, “Rotor Balancing Tutorial,” in Proc. 45th Turbomachinery & 32nd Pump Symposia, Houston, TX, USA, Sept. 12–15, 2016.")
     st.write("[2] R. C. Eisenmann Sr. and R. C. Eisenmann Jr., Machinery Malfunction Diagnosis and Correction: Vibration Analysis and Troubleshooting for the Process Industries. Upper Saddle River, NJ, USA: Hewlett-Packard Professional Books, 1997.")
