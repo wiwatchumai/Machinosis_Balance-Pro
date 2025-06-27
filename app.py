@@ -107,9 +107,12 @@ if st.button("Run Balancing Analysis"):
 
     st.markdown("---------------------------------------------------")  # horizontal line for separation
 
-    st.title("👨‍💻 Author")
-    st.image("author.png", width=100)  # Placeholder for author image, can be replaced with an actual image URL
-    st.write("This application was developed by a mechanical engineering student at **Kyushu University**, Japan 🇯🇵.")
+    st.title("Author")
+    col1, col2 = st.columns([8, 2])
+    with col1:
+        st.image("author.png", width=100)  #
+    with col2:
+        st.write("This application was developed by a mechanical engineering student at **Kyushu University**, Japan 🇯🇵.")  # Add vertical space above the image
     st.write("")
     st.markdown("### 🧑‍🔧 **Wiwat Chumai**")  
     st.write("Department of Mechanical and Aerospace Engineering")
