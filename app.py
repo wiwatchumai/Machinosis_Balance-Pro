@@ -104,3 +104,15 @@ if st.button("Run Balancing Analysis"):
     st.write("This application is developed based on the principles of single-plane balancing for rotating machinery. The correction methods implemented are guided by the following reference(s):")
     st.write("[1] R. Kelm, D. Pavelek, and W. Kelm, “Rotor Balancing Tutorial,” in Proc. 45th Turbomachinery & 32nd Pump Symposia, Houston, TX, USA, Sept. 12–15, 2016.")
     st.write("[2] R. C. Eisenmann Sr. and R. C. Eisenmann Jr., Machinery Malfunction Diagnosis and Correction: Vibration Analysis and Troubleshooting for the Process Industries. Upper Saddle River, NJ, USA: Hewlett-Packard Professional Books, 1997.")
+
+    st.markdown("---------------------------------------------------")  # horizontal line for separation
+
+    st.title("Author")
+    st.write("This application is developed by a mechanical engineering student at Kyushu University.")
+    st.write("")
+    st.write("Wiwat Chumai")
+    st.write("Mechanical and Aerospace Engineering, Kyushu University")
+    st.write("If you have any questions or suggestions, please feel free to contact me through the following channels:")
+    st.markdown("[GitHub](https://github.com/wiwatchumai/Machinosis_Balance-Pro.git)")
+    st.markdown("[Gmail](wiwatchumai@gmail.com)")
+    st.markdown("[More information about author](https://v0-new-project-znvvxbesxef.vercel.app/)")
