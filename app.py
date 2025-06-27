@@ -4,7 +4,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Single-Plane Balancing", page_icon="favicon.png")
 
-col1, col2 = st.columns([8, 2])
+col1, col2 = st.columns([7, 3])
 with col1:
     st.title("Single Plane Balancing of Rotating Machinery")
 with col2:
