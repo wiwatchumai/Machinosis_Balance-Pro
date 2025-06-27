@@ -107,14 +107,19 @@ if st.button("Run Balancing Analysis"):
 
     st.markdown("---------------------------------------------------")  # horizontal line for separation
 
-    st.title("Author")
-    st.write("This application is developed by a mechanical engineering student at Kyushu University.")
+    st.title("👨‍💻 Author")
+    st.image("author.png", width=100)  # Placeholder for author image, can be replaced with an actual image URL
+    st.write("This application was developed by a mechanical engineering student at **Kyushu University**, Japan 🇯🇵.")
     st.write("")
-    st.write("Wiwat Chumai")
-    st.write("Mechanical and Aerospace Engineering, Kyushu University")
-    st.write("If you have any questions or suggestions, please feel free to contact me through the following channels:")
+    st.markdown("### 🧑‍🔧 **Wiwat Chumai**")  
+    st.write("Department of Mechanical and Aerospace Engineering")
+    st.write("Kyushu University")
+
+    st.markdown("---")
+    st.write("📬 **Questions or Suggestions?** I’d love to hear from you! Feel free to reach out through the channels below:")
+
     st.markdown(
-        "[GitHub](https://github.com/wiwatchumai/Machinosis_Balance-Pro.git) | "
-        "[Gmail](wiwatchumai@gmail.com) | "
-        "[More information about author](https://v0-new-project-znvvxbesxef.vercel.app/)"
+        "🔗 [GitHub Repository](https://github.com/wiwatchumai/Machinosis_Balance-Pro.git) &nbsp;&nbsp;🚀  \n"
+        "📧 [Email Me](mailto:wiwatchumai@gmail.com) &nbsp;&nbsp;✉️  \n"
+        "🔍 [More About the Author](https://v0-new-project-znvvxbesxef.vercel.app/) &nbsp;&nbsp;📖"
     )
