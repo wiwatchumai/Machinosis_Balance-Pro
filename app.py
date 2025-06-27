@@ -108,7 +108,7 @@ if st.button("Run Balancing Analysis"):
     st.markdown("---------------------------------------------------")  # horizontal line for separation
 
     st.title("Author")
-    col1, col2 = st.columns([8, 2])
+    col1, col2 = st.columns([2, 8])
     with col1:
         st.image("author.png", width=100)  #
     with col2:
