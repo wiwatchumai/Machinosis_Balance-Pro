@@ -112,15 +112,11 @@ if st.button("Run Balancing Analysis"):
     with col1:
         st.image("author.png", width=100)  #
     with col2:
+        st.write("Wiwat Chumai")  # Add vertical space above the image
+        st.write("Mechanical and Aerospace Engineering, Kyushu University")
         st.write("This application was developed by a mechanical engineering student at **Kyushu University**, Japan 🇯🇵.")  # Add vertical space above the image
-    st.write("")
-    st.markdown("### 🧑‍🔧 **Wiwat Chumai**")  
-    st.write("Department of Mechanical and Aerospace Engineering")
-    st.write("Kyushu University")
-
     st.markdown("---")
-    st.write("📬 **Questions or Suggestions?** I’d love to hear from you! Feel free to reach out through the channels below:")
-
+    st.write("📬 **Questions or Suggestions?** Please do not hesitate to contact. Feel free to reach out through the channels below:")
     st.markdown(
         "🔗 [GitHub Repository](https://github.com/wiwatchumai/Machinosis_Balance-Pro.git) &nbsp;&nbsp;🚀  \n"
         "📧 [Email Me](mailto:wiwatchumai@gmail.com) &nbsp;&nbsp;✉️  \n"
