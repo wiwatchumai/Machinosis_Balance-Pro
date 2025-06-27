@@ -4,10 +4,12 @@ import streamlit as st
 
 st.set_page_config(page_title="Single-Plane Balancing", page_icon="favicon.png")
 
-col1, col2 = st.columns([7, 3])
+col1, col2 = st.columns([8, 2])
 with col1:
     st.title("Single Plane Balancing of Rotating Machinery")
 with col2:
+    st.write("")  # Add vertical space above the image
+    st.write("")  # Add more space if needed
     st.image("favicon.png", width=100)
 
 st.write("Made by Wiwat Chumai (Mechanical and Aerospace Engineering, Kyushu University)")
