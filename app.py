@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 
-st.set_page_config(page_title="Single Plane Balancing", page_icon="favicon.png")
-
+st.set_page_config(page_title="Single-Plane Balancing", page_icon="favicon.png")
+st.image("favicon.png", width=60)
 st.title("Single Plane Balancing of Rotating Machinery")
 st.write("Made by Wiwat Chumai (Mechanical and Aerospace Engineering, Kyushu University)")
 # Input fields
