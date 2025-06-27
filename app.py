@@ -115,6 +115,7 @@ if st.button("Run Balancing Analysis"):
         st.write("Wiwat Chumai")  # Add vertical space above the image
         st.write("Mechanical and Aerospace Engineering, Kyushu University")
         st.write("This application was developed by a mechanical engineering student at **Kyushu University**, Japan 🇯🇵.")  # Add vertical space above the image
+    
     st.markdown("---")
     st.write("📬 **Questions or Suggestions?** Please do not hesitate to contact. Feel free to reach out through the channels below:")
     st.markdown(
