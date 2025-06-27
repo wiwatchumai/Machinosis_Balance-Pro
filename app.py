@@ -91,6 +91,8 @@ if st.button("Run Balancing Analysis"):
 
     st.pyplot(fig)
 
+    st.markdown("---------------------------------------------------")  # horizontal line for separation
+    st.image("mcl.png", width=100)
     st.title("References")
     st.write("This application is developed based on the principles of single-plane balancing for rotating machinery. The correction methods implemented are guided by the following reference(s):")
     st.write("[1] R. Kelm, D. Pavelek, and W. Kelm, “Rotor Balancing Tutorial,” in Proc. 45th Turbomachinery & 32nd Pump Symposia, Houston, TX, USA, Sept. 12–15, 2016.")
