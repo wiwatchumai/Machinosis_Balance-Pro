@@ -28,7 +28,7 @@ rotor_weight = float(input("Enter the rotor weight (Pounds): "))
 # Input trail weight percentage to rotor weight
 tw_percentage = float(input("Enter the percentage to rotor weight (e.g. 5/10/15%): "))
 # Input trial weight phase
-tw_phase = o_phase+180 # 180 degrees phase shift for trial weight
+tw_phase = float(input("Enter the trial weight phase (in degrees): "))
 # calculate the predicted trial weight magnitude
 tw_predicted = 35.27396195 * ((tw_percentage / 100) * rotor_weight * 0.45359237 * 9.81)/ (balancing_radius * 0.0245 * ((rotor_speed*(2*np.pi/60))**2))
 print(f"Predicted Trial Weight: {tw_predicted:.2f} oz")
