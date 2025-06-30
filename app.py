@@ -29,7 +29,7 @@ with st.container():
     st.markdown("---------------------------------------------------")  # horizontal line for separation
 
 tw_amplitude = st.number_input("YOUR Trial weight (e.g. oz):", min_value=0.0)
-tw_phase = st.number_input("Trial weight phase (e.g. degrees):", min_value=0.0, max_value=360.0)
+tw_phase = o_phase + 180  # 180 degrees phase shift for trial weight
 
 if st.button("Run Balancing Analysis"):
     tw_predicted = 35.27396195 * ((tw_percentage / 100) * rotor_weight * 0.45359237 * 9.81) / (balancing_radius * 0.0245 * ((rotor_speed * (2 * np.pi / 60)) ** 2))
