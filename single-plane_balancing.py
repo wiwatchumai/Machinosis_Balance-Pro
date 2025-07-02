@@ -115,3 +115,4 @@ plt.show()
 
 # suggestions: 1. Balancing radius 2. Rotor Weight 3. RPM 
 # tw default == 10%, suggest to input percentagas (5,10, 15%)
+
