@@ -44,6 +44,10 @@ Re_t = Re_O_t - Re_O
 Im_t = Im_O_t - Im_O
 Amplitude_t= np.sqrt(Re_t**2 + Im_t**2)
 Phase_t= np.degrees(np.arctan2(Im_t, Re_t)) + 360
+if Phase_t > 360:
+    Phase_t = Phase_t % 360  # Normalize phase to [0, 360)
+else:
+    Phase_t = (Phase_t + 360) % 360
 
 print(f"Effective vibration vector: {Amplitude_t:.2f} mils at {Phase_t:.2f} degrees") # .2f mean 2 digit float 
 
@@ -57,14 +61,23 @@ phase_influence_coefficient = tw_phase - Phase_t
 
 print(f"Influence Coefficient: {influence_coefficient:.2f} at {phase_influence_coefficient:.2f} degrees")
 
+if phase_influence_coefficient >= 360:
+    phase_influence_coefficient = phase_influence_coefficient % 360  # Normalize phase to [0, 360)
+else: 
+    phase_influence_coefficient = (phase_influence_coefficient + 360) % 360
+    
+
 # calculate the heavy spot
 hs_amplitude = influence_coefficient * o_amplitude
 hs_phase = o_phase + phase_influence_coefficient
 
+if hs_phase >= 360:
+    hs_phase = hs_phase % 360  # Normalize phase to [0, 360)
+else:
+    hs_phase = (hs_phase + 360) % 360
+
 print(f"Heavy Spot: {hs_amplitude:.2f} mils at {hs_phase:.2f} degrees")
 
-#
-# 
 
 # calculate the influence coefficient 
 influence_coefficient_predicted = (tw_predicted)/Amplitude_t
@@ -75,6 +88,11 @@ print(f"(Predicted) Influence Coefficient: {influence_coefficient:.2f} at {phase
 hs_amplitude_predicted = influence_coefficient_predicted * o_amplitude
 hs_phase = o_phase + phase_influence_coefficient
 
+if hs_phase >= 360:
+    hs_phase = hs_phase % 360  # Normalize phase to [0, 360)
+else:
+    hs_phase = (hs_phase + 360) % 360
+
 print(f"(Predicted) Heavy Spot: {hs_amplitude:.2f} mils at {hs_phase:.2f} degrees")
 
 #___________________________________________________________________#
@@ -83,6 +101,11 @@ print(f"(Predicted) Heavy Spot: {hs_amplitude:.2f} mils at {hs_phase:.2f} degree
 cw_amplitude = hs_amplitude
 cw_amplitude_predicted = hs_amplitude_predicted
 cw_phase = hs_phase + 180  # 180 degrees phase shift for correction weight
+
+if cw_phase >= 360:
+    cw_phase = cw_phase % 360  # Normalize phase to [0, 360)
+else:
+    cw_phase = (cw_phase + 360) % 360
 
 print(f"Correction Weight: {cw_amplitude:.2f} mils at {cw_phase:.2f} degrees")
 print(f"Correction Weight: {cw_amplitude_predicted:.2f} mils at {cw_phase:.2f} degrees")
@@ -116,3 +139,5 @@ plt.show()
 # suggestions: 1. Balancing radius 2. Rotor Weight 3. RPM 
 # tw default == 10%, suggest to input percentagas (5,10, 15%)
 
+
+## Rotor- Couple -> Two Plane / Static -> One Plane
