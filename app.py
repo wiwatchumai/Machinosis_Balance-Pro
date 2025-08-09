@@ -48,41 +48,62 @@ if st.button("Run Balancing Analysis"):
 
     st.write(f"**Effective Vibration Vector:** {Amplitude_t:.2f} mils @ {Phase_t:.2f} degrees")
 
-    magnitude_o = np.sqrt(Re_O**2 + Im_O**2)
-    influence_coefficient = tw_amplitude / Amplitude_t
+    # Calculate the influence coefficient 
+    influence_coefficient = tw_amplitude / Amplitude_t if Amplitude_t != 0 else 0
     phase_influence_coefficient = tw_phase - Phase_t
 
     st.write(f"**Influence Coefficient:** {influence_coefficient:.2f} @ {phase_influence_coefficient:.2f} degrees")
 
+    # Calculate the heavy spot
     hs_amplitude = influence_coefficient * o_amplitude
     hs_phase = o_phase + phase_influence_coefficient
 
     st.write(f"**Heavy Spot:** {hs_amplitude:.2f} mils @ {hs_phase:.2f} degrees")
 
-    influence_coefficient_predicted = tw_predicted / Amplitude_t
+    # Predicted influence coefficient and heavy spot
+    influence_coefficient_predicted = tw_predicted / Amplitude_t if Amplitude_t != 0 else 0
     hs_amplitude_predicted = influence_coefficient_predicted * o_amplitude
+    hs_phase_predicted = o_phase + phase_influence_coefficient
 
+    # Correction weight
     cw_amplitude = hs_amplitude
     cw_amplitude_predicted = hs_amplitude_predicted
     cw_phase = hs_phase + 180
+    if cw_phase >= 360:
+        cw_phase = cw_phase % 360
+    else:
+        cw_phase = (cw_phase + 360) % 360
 
     st.write(f"**Correction Weight:** {cw_amplitude:.2f} mils @ {cw_phase:.2f} degrees")
+    st.write(f"**Correction Weight (Predicted):** {cw_amplitude_predicted:.2f} mils @ {cw_phase:.2f} degrees")
 
     # Plotting polar plot
-    fig = plt.figure(figsize=(6, 6))
+    fig = plt.figure(figsize=(7, 7))
     ax = fig.add_subplot(111, polar=True)
 
+    # Auto-scale the polar plot based on the largest vector
+    max_length = max(o_amplitude, ot_amplitude, Amplitude_t, cw_amplitude) * 1.2
+    ax.set_rlim(0, max_length)
+
+    # Original vector
     ax.arrow(np.radians(o_phase), 0, 0, o_amplitude, 
              length_includes_head=True, head_width=0.1, head_length=0.1, color='b', label='Original (o)')
     ax.text(np.radians(o_phase), o_amplitude * 1.05, f'{o_amplitude:.2f}', color='b', ha='center', va='bottom', fontsize=10, fontweight='bold')
 
+    # Original + trial vector
     ax.arrow(np.radians(ot_phase), 0, 0, ot_amplitude, 
              length_includes_head=True, head_width=0.1, head_length=0.1, color='g', label='Original+Trial (ot)')
     ax.text(np.radians(ot_phase), ot_amplitude * 1.05, f'{ot_amplitude:.2f}', color='g', ha='center', va='bottom', fontsize=10, fontweight='bold')
 
+    # Effective vector (t)
     ax.arrow(np.radians(Phase_t % 360), 0, 0, Amplitude_t, 
              length_includes_head=True, head_width=0.1, head_length=0.1, color='r', label='Effective (t)')
     ax.text(np.radians(Phase_t % 360), Amplitude_t * 1.05, f'{Amplitude_t:.2f}', color='r', ha='center', va='bottom', fontsize=10, fontweight='bold')
+
+    # Correction weight vector (purple)
+    ax.arrow(np.radians(cw_phase % 360), 0, 0, cw_amplitude, 
+             length_includes_head=True, head_width=0.1, head_length=0.1, color='purple', label='Correction Weight (cw)')
+    ax.text(np.radians(cw_phase % 360), cw_amplitude * 1.05, f'{cw_amplitude:.2f}', color='purple', ha='center', va='bottom', fontsize=10, fontweight='bold')
 
     ax.set_theta_zero_location('E')
     ax.set_theta_direction(-1)
